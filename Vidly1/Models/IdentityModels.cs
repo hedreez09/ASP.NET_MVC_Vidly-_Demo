@@ -29,5 +29,7 @@ namespace Vidly1.Models
         {
             return new ApplicationDbContext();
         }
-    }
+
+		public System.Data.Entity.DbSet<Vidly1.Models.Customer> Customers { get; set; }
+	}
 }
