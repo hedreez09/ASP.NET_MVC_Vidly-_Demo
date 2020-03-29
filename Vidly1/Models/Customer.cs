@@ -10,9 +10,9 @@ namespace Vidly1.Models
 	{
 		public int Id { get; set; }
 		[Required]
-		[StringLength(255)]
+		[StringLength(500)]
 		public string Name { get; set; }
-		public bool IsSubscribedTonewsLetter { get; set; }
+		public bool IsSubscribedToNewsletter { get; set; }
 		public MembershipType MembershipType { get; set; }
 		public byte MembershipTypeId { get; set; }
 		public DateTime? Birthdate { get; set; }

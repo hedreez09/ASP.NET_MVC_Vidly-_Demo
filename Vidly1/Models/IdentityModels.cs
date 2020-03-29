@@ -19,17 +19,18 @@ namespace Vidly1.Models
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+	{
+		public DbSet<Customer> Customers { get; set; }
+		public DbSet<Movie> Movies { get; set; }
+
+		public ApplicationDbContext()
+            : base("ApplicationDbContext", throwIfV1Schema: false)
         {
         }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
-        }
-
-		public System.Data.Entity.DbSet<Vidly1.Models.Customer> Customers { get; set; }
+        }	
 	}
 }
