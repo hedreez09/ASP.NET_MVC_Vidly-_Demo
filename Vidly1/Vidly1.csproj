@@ -193,6 +193,14 @@
     <Compile Include="Migrations\202004020553157_PopulateGenre.designer.cs">
       <DependentUpon>202004020553157_PopulateGenre.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004022118332_ApplyDataAnnotation.cs" />
+    <Compile Include="Migrations\202004022118332_ApplyDataAnnotation.designer.cs">
+      <DependentUpon>202004022118332_ApplyDataAnnotation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004022128460_ApplyDataAnnotationToGenreId.cs" />
+    <Compile Include="Migrations\202004022128460_ApplyDataAnnotationToGenreId.designer.cs">
+      <DependentUpon>202004022128460_ApplyDataAnnotationToGenreId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -299,6 +307,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004020553157_PopulateGenre.resx">
       <DependentUpon>202004020553157_PopulateGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004022118332_ApplyDataAnnotation.resx">
+      <DependentUpon>202004022118332_ApplyDataAnnotation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004022128460_ApplyDataAnnotationToGenreId.resx">
+      <DependentUpon>202004022128460_ApplyDataAnnotationToGenreId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

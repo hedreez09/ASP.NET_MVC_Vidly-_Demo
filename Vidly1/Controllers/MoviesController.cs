@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Vidly1.Models;
 using System.Data.Entity;
 using Vidly1.ViewModels;
+using System.Data.Entity.Validation;
 
 namespace Vidly1.Controllers
 {
@@ -37,6 +38,10 @@ namespace Vidly1.Controllers
 		[HttpPost]
 		public ActionResult Save(Movie movie)
 		{
+			movie.GenreId = 5;
+
+			var ade = Newtonsoft.Json.JsonConvert.SerializeObject(movie);
+
 			if (movie.Id == 0)
 				_context.Movies.Add(movie);
 			else
@@ -51,8 +56,8 @@ namespace Vidly1.Controllers
 			}
 
 
-			_context.SaveChanges();
 
+			_context.SaveChanges();
 			return RedirectToAction("Index", "Movies");
 
 		}
@@ -65,6 +70,7 @@ namespace Vidly1.Controllers
 
 			return View(movies);
 			}
+
 		public ActionResult Details(int id)
 		{
 			var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
@@ -78,7 +84,7 @@ namespace Vidly1.Controllers
 
 		public ActionResult Edit(int id)
 		{
-			var movie = _context.Movies.SingleOrDefault(m => m.GenreId == id);
+			var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
 			if (movie == null)
 				return HttpNotFound();
 			var viewModel = new MovieFormViewModel
