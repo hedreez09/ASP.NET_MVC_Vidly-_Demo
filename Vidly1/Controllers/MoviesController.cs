@@ -93,8 +93,20 @@ namespace Vidly1.Controllers
 				Genres = _context.Genres.ToList()
 			};
 
-			return View("MovieForm", viewModel);
+			return View("MovieForm", viewModel); ;
 		}
 
+		public ActionResult DeleteMovie( int id)
+		{
+			var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);
+			if (movieInDb == null)
+				return HttpNotFound();
+
+			_context.Movies.Remove(movieInDb);
+			_context.SaveChanges();
+
+			return RedirectToAction("Index", "Movies");
+
+		}
 	}
 }

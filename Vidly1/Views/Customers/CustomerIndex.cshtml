@@ -31,11 +31,19 @@ else
     <tbody>
         @foreach (var customer in Model)
         {
-            <tr>
-                <td>@Html.ActionLink(customer.Name, "Edit", "Customers", new { id = customer.Id }, null)</td>
-                <td>@customer.MembershipType.Name</td>
-                <td>@customer.MembershipType.DiscountRate%</td>
-            </tr>
+        <tr>
+            <td>@Html.ActionLink(customer.Name, "Edit", "Customers", new { id = customer.Id }, null)</td>
+            <td>@customer.MembershipType.Name</td>
+            <td>@customer.MembershipType.DiscountRate%</td>
+            <td>
+                @using (Html.BeginForm("DeleteCustomer", "Customers", new { id = customer.Id }))
+                {
+                    <button type="submit" class="btn btn-danger"
+                    onclick="return confirm('Are you sure you want to delete this movie with ID=@customer.Name');">Delete
+                   </button>
+                }
+            </td>
+        </tr>
         }
     </tbody>
 </table>
