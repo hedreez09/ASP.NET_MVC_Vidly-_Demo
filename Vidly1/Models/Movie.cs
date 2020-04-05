@@ -16,10 +16,13 @@ namespace Vidly1.Models
 
 		public Genre Genre { get; set; }
 
+		[Required]
 		public DateTime ReleaseDate { get; set; }
 
+		[Required]
 		public DateTime DateAdded { get; set; }
 
+		[Required]
 		public int NumberInStock { get; set; }
 	}
 }

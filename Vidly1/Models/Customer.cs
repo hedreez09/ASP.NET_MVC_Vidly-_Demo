@@ -22,6 +22,7 @@ namespace Vidly1.Models
 		public byte MembershipTypeId { get; set; }
 
 		[Display(Name ="Birthdate" )]
+		[Min18YearsIfAMember]
 		public DateTime? Birthdate { get; set; }
 	}
 }

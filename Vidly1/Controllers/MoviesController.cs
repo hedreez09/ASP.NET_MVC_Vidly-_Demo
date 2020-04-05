@@ -28,7 +28,7 @@ namespace Vidly1.Controllers
 		{
 			var genres = _context.Genres.ToList();
 			var viewModel = new MovieFormViewModel
-			{
+			{	
 				Genres = genres
 			};
 
@@ -36,11 +36,21 @@ namespace Vidly1.Controllers
 		}
 
 		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public ActionResult Save(Movie movie)
 		{
-			movie.GenreId = 5;
+			if (!ModelState.IsValid)// this help in getting access to validation data. 
+			{
+				var viewModel = new MovieFormViewModel(movie)
+				{
+					
+					Genres = _context.Genres.ToList()
+					
+				};
+				return View("MovieForm", viewModel);
+			}
 
-			var ade = Newtonsoft.Json.JsonConvert.SerializeObject(movie);
+			//var ade = Newtonsoft.Json.JsonConvert.SerializeObject(movie);
 
 			if (movie.Id == 0)
 				_context.Movies.Add(movie);
@@ -87,9 +97,8 @@ namespace Vidly1.Controllers
 			var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
 			if (movie == null)
 				return HttpNotFound();
-			var viewModel = new MovieFormViewModel
+			var viewModel = new MovieFormViewModel(movie)
 			{
-				Movie = movie,
 				Genres = _context.Genres.ToList()
 			};
 
