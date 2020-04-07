@@ -65,7 +65,7 @@ namespace Vidly1.Controllers.Api
 
 			Mapper.Map(customerDto, customerInDb);
 
-			_context.SaveChanges();
+			_ = _context.SaveChanges();
 		}
 
 		//delete /api/customer/1
